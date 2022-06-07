@@ -5,6 +5,8 @@ class Statistics extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(child: Text('Stats'),);
+    return Center(
+      child: Text('Stats'),
+    );
   }
 }

@@ -15,11 +15,14 @@ dependencies:
   convex_bottom_bar: ^3.0.0
   isar: ^2.5.0
   flutter_svg: ^1.1.0
+  svg_path_parser: ^1.1.1
+
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^2.0.0
+  build_runner: ^2.1.11
 
 flutter:
 
