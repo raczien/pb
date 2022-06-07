@@ -17,7 +17,8 @@ class _BodyPartState extends State<BodyPart> {
         child: InkWell(
           onTap: () {
             setState(() {
-              x.
+
+              print('update value');
             });
           },
           child: CustomPaint(

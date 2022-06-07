@@ -2,7 +2,27 @@ import 'package:flutter/material.dart';
 
 import '../constants.dart';
 
+
+class TestPainter extends CustomPainter{
+  List<Path> body = [
+
+  ];
+  @override
+  void paint(Canvas canvas, Size size) {
+    // TODO: implement paint
+  }
+
+  @override
+  bool shouldRepaint(covariant CustomPainter oldDelegate) {
+    // TODO: implement shouldRepaint
+    throw UnimplementedError();
+  }
+
+}
+
 class RPSCustomPainter extends CustomPainter {
+  static List<Path> all = [];
+
   @override
   void paint(Canvas canvas, Size size) {
     Path hair = Path();
@@ -198,6 +218,7 @@ class RPSCustomPainter extends CustomPainter {
     Paint paint_hair_fill = Paint()..style = PaintingStyle.fill;
     paint_hair_fill.color = kDrawColor.withOpacity(1.0);
     canvas.drawPath(hair, paint_hair_fill);
+    all.add(hair);
 
     Path face = Path();
     face.moveTo(size.width * 0.5282309, size.height * 0.03256484);
@@ -353,6 +374,7 @@ class RPSCustomPainter extends CustomPainter {
     Paint paint_face_fill = Paint()..style = PaintingStyle.fill;
     paint_face_fill.color = kDrawColor.withOpacity(1.0);
     canvas.drawPath(face, paint_face_fill);
+    all.add(face);
 
     Path neck = Path();
     neck.moveTo(size.width * 0.4459222, size.height * 0.1275937);
@@ -580,6 +602,7 @@ class RPSCustomPainter extends CustomPainter {
     Paint paint_neck_fill = Paint()..style = PaintingStyle.fill;
     paint_neck_fill.color = kDrawColor.withOpacity(1.0);
     canvas.drawPath(neck, paint_neck_fill);
+    all.add(neck);
 
     Path neck_right = Path();
     neck_right.moveTo(size.width * 0.4401506, size.height * 0.1417147);
@@ -628,6 +651,7 @@ class RPSCustomPainter extends CustomPainter {
     Paint paint_neck_right_fill = Paint()..style = PaintingStyle.fill;
     paint_neck_right_fill.color = kDrawColor.withOpacity(1.0);
     canvas.drawPath(neck_right, paint_neck_right_fill);
+    all.add(neck_right);
 
     Path neck_left = Path();
     neck_left.moveTo(size.width * 0.5471769, size.height * 0.1397695);
@@ -683,6 +707,7 @@ class RPSCustomPainter extends CustomPainter {
     Paint paint_neck_left_fill = Paint()..style = PaintingStyle.fill;
     paint_neck_left_fill.color = kDrawColor.withOpacity(1.0);
     canvas.drawPath(neck_left, paint_neck_left_fill);
+    all.add(neck_left);
 
     Path shoulder_right = Path();
     shoulder_right.moveTo(size.width * 0.3218319, size.height * 0.1796830);
@@ -760,6 +785,7 @@ class RPSCustomPainter extends CustomPainter {
     Paint paint_shoulder_right_fill = Paint()..style = PaintingStyle.fill;
     paint_shoulder_right_fill.color = kDrawColor.withOpacity(1.0);
     canvas.drawPath(shoulder_right, paint_shoulder_right_fill);
+    all.add(shoulder_right);
 
     Path shoulder_left = Path();
     shoulder_left.moveTo(size.width * 0.6144291, size.height * 0.1791787);
@@ -847,6 +873,7 @@ class RPSCustomPainter extends CustomPainter {
     Paint paint_shoulder_left_fill = Paint()..style = PaintingStyle.fill;
     paint_shoulder_left_fill.color = kDrawColor.withOpacity(1.0);
     canvas.drawPath(shoulder_left, paint_shoulder_left_fill);
+    all.add(shoulder_left);
 
     Path chest_right = Path();
     chest_right.moveTo(size.width * 0.3992472, size.height * 0.1900576);
@@ -939,6 +966,7 @@ class RPSCustomPainter extends CustomPainter {
     Paint paint_chest_right_fill = Paint()..style = PaintingStyle.fill;
     paint_chest_right_fill.color = kDrawColor.withOpacity(1.0);
     canvas.drawPath(chest_right, paint_chest_right_fill);
+    all.add(chest_right);
 
     Path chest_left = Path();
     chest_left.moveTo(size.width * 0.5696361, size.height * 0.1892651);
@@ -1031,6 +1059,7 @@ class RPSCustomPainter extends CustomPainter {
     Paint paint_chest_left_fill = Paint()..style = PaintingStyle.fill;
     paint_chest_left_fill.color = kDrawColor.withOpacity(1.0);
     canvas.drawPath(chest_left, paint_chest_left_fill);
+    all.add(chest_left);
 
     Path path_9 = Path();
     path_9.moveTo(size.width * 0.2961104, size.height * 0.2495677);
