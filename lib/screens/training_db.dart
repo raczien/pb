@@ -6,6 +6,11 @@ class Training_db extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(child: BodyPart());
+    return Column(
+      children: [
+        Text('adada'),
+        Expanded(child: BodyPart()),
+      ],
+    );
   }
 }
