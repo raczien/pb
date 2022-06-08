@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:pb/widgets/bodyPart.dart';
+
+import '../front_body.dart';
 
 class Training_db extends StatelessWidget {
   const Training_db({Key? key}) : super(key: key);
@@ -8,8 +9,21 @@ class Training_db extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Text('adada'),
-        Expanded(child: BodyPart()),
+        Expanded(
+          child: FrontBody(),
+        ),
+        TextButton(
+          onPressed: () {
+            FrontBodyPainter.addGroup();
+          },
+          child: Text('Core'),
+        ),
+        TextButton(
+          onPressed: () {
+            FrontBodyPainter.clearSelectedMuscles();
+          },
+          child: Text('Clear'),
+        ),
       ],
     );
   }
