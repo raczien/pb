@@ -3,10 +3,10 @@ import 'package:flutter/rendering.dart';
 
 import 'data.dart';
 
-class FrontBody extends StatelessWidget {
+class BackBody extends StatelessWidget {
   final notifier = ValueNotifier(Offset.zero);
 
-  FrontBody({Key? key}) : super(key: key);
+  BackBody({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -14,33 +14,21 @@ class FrontBody extends StatelessWidget {
       onPointerDown: (e) => notifier.value = e.localPosition,
       onPointerMove: (e) => notifier.value = e.localPosition,
       child: CustomPaint(
-        painter: FrontBodyPainter(notifier),
+        painter: BackBodyPainter(notifier),
         child: const SizedBox.expand(),
       ),
     );
   }
 }
 
-class FrontBodyPainter extends CustomPainter {
-  FrontBodyPainter(this._notifier) : super(repaint: _notifier);
+class BackBodyPainter extends CustomPainter {
+  BackBodyPainter(this._notifier) : super(repaint: _notifier);
 
   final ValueNotifier<Offset> _notifier;
   final Paint _paint = Paint();
   Size _size = Size.zero;
   static var _selectedMuscles = [];
   Offset lastNotifier = const Offset(0.0, 0.0);
-
-  // list param - kann aus data.dart übergeben
-  static void addGroup() {
-    _selectedMuscles.add(frontBodyShapes[15]);
-    _selectedMuscles.add(frontBodyShapes[16]);
-    _selectedMuscles.add(frontBodyShapes[17]);
-    _selectedMuscles.add(frontBodyShapes[18]);
-    _selectedMuscles.add(frontBodyShapes[19]);
-    _selectedMuscles.add(frontBodyShapes[20]);
-    _selectedMuscles.add(frontBodyShapes[21]);
-    _selectedMuscles.add(frontBodyShapes[22]);
-  }
 
   static void clearSelectedMuscles() {
     _selectedMuscles.clear();
@@ -53,32 +41,31 @@ class FrontBodyPainter extends CustomPainter {
     if (size != _size) {
       _size = size;
       final fs =
-          applyBoxFit(BoxFit.contain, const Size(797.0000, 1388.0000), size);
+          applyBoxFit(BoxFit.contain, const Size(802.0000, 1388.0000), size);
       final r = Alignment.center.inscribe(fs.destination, Offset.zero & size);
       final matrix = Matrix4.translationValues(r.left, r.top, 0)
         ..scale(fs.destination.width / fs.source.width);
-      for (var shape in frontBodyShapes) {
+      for (var shape in backBodyShapes) {
         shape.transform(matrix);
       }
     }
     canvas.clipRect(Offset.zero & size);
-    for (var shape in frontBodyShapes) {
+    for (var shape in backBodyShapes) {
       if (lastSize == size &&
           _notifier.value != const Offset(0.0, 0.0) &&
           lastNotifier != _notifier.value) {
         if (shape.transformedPath.contains(_notifier.value)) {
           if (_selectedMuscles.contains(shape)) {
-            //print("removing: ${shape._label}");
             _selectedMuscles.remove(shape);
           } else {
-            //print("adding: ${shape._label}");
+            print("adding: ${shape.label}");
             _selectedMuscles.add(shape);
           }
         }
       }
     }
     lastNotifier = _notifier.value;
-    for (var shape in frontBodyShapes) {
+    for (var shape in backBodyShapes) {
       final path = shape.transformedPath;
       //Draw all shapes
       _paint
